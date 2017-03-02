@@ -28,12 +28,16 @@ To run without printing log file
 ```
 
 ## Verify the overlapping from the trace file
-We need to run two streams and generating the trace.
+* step 1: we need to run two streams and generating the trace.
 
 The following example running 2 streams on dev 0, with data size 1000 floats for each vector.
 ```bash
 nvprof --print-gpu-trace --csv ./mem_mem_ptx_all 2 0 1000 0 2> trace.csv
 ```
+* step 2: use read_trace.ipynb
+
+you can visualize the timeline using the python notebook. Search instances when the two kernels will have execution overlapping.
+
 
 ### Reference
 https://github.com/3upperm2n/cke_ovlp_rate
