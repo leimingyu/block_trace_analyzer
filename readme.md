@@ -26,6 +26,8 @@ To run without printing log file
 ```bash
 ./mem_mem_ptx_all 1 0 1000 0
 ```
+## Device Info
+GTX 950: maxwell, 6 SMs
 
 ## Verify the overlapping from the trace file
 * step 1: we need to run two streams and generating the trace.
@@ -37,6 +39,10 @@ nvprof --print-gpu-trace --csv ./mem_mem_ptx_all 2 0 1000 0 2> trace.csv
 * step 2: use read_trace.ipynb
 
 you can visualize the timeline using the python notebook. Search instances when the two kernels will have execution overlapping.
+
+for mem_mem, 12000 - 300000 seems to be a good overlapping test range.
+
+* step 3: generate the trace for prefound search range
 
 
 ### Reference
