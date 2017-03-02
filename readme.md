@@ -4,8 +4,15 @@ Leiming Yu
 * Twitter: @yu_leiming
 * Blog: http://www1.coe.neu.edu/~ylm/
 
+### Motivation
+Analyze the concurrent kernel execution.
 
+### Folders
+* mem_mem : memory bound kernel 
+* cmp_cmp : compute bound kernel
 
+### Techniques
+* inline ptx for thread timing and other trace info
 
 
 ### Reference
