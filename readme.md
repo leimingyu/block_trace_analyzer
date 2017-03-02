@@ -44,6 +44,14 @@ for mem_mem, 12000 - 300000 seems to be a good overlapping test range.
 
 * step 3: generate the trace for prefound search range
 
+run profile_app.sh in the terminal
+
+It will produce both trace and metrics for all the sampling points.
+```bash
+./profile_app.sh
+```
+
+
 
 ### Reference
 https://github.com/3upperm2n/cke_ovlp_rate
