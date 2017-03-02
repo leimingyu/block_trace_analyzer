@@ -28,7 +28,12 @@ To run without printing log file
 ```
 
 ## Verify the overlapping from the trace file
+We need to run two streams and generating the trace.
 
+The following example running 2 streams on dev 0, with data size 1000 floats for each vector.
+```bash
+nvprof --print-gpu-trace --csv ./mem_mem_ptx_all 2 0 1000 0 2> trace.csv
+```
 
 ### Reference
 https://github.com/3upperm2n/cke_ovlp_rate
