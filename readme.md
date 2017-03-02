@@ -13,7 +13,7 @@ Analyze the concurrent kernel execution.
 
 ### Techniques
 * inline ptx for thread timing and other trace info
-
+* using unified memory to store the trace
 
 ### Reference
 https://github.com/3upperm2n/cke_ovlp_rate
