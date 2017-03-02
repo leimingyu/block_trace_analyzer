@@ -26,7 +26,6 @@ public:
 		free_data();	
 	}
 
-
 	void compute_totalwarps(dim3 blocks, dim3 threads)
 	{
 		int total_blocks = blocks.x * blocks.y * blocks.z;	
@@ -37,7 +36,6 @@ public:
 		total_warps = total_blocks * warps_per_block;
 	}
 
-
 	void compute_totalthreads(dim3 blocks, dim3 threads)
 	{
 		int total_blocks = blocks.x * blocks.y * blocks.z;	
@@ -45,17 +43,12 @@ public:
 		total_threads= total_blocks * threads_per_blk;
 	}
 
-
-
 	void print_log(int streamid)
 	{
 		cudaDeviceSynchronize();
 
-		//printf("thread_id,stream_id,sm_id,block_id,start,end\n");
-
 		for(int i=0; i<total_threads; i++)
 		{
-			//printf("%d,\t\t\t%d,\t\t\t%u,\t\t\t%u,\t\t\t%u,\t\t%u\n",
 			printf("%12d,%12d,%12u,%12u,%12lf,%12lf\n",
 					i, 
 					streamid, 
@@ -68,12 +61,6 @@ public:
 
 	void allocate_data() 
 	{
-/*
-		cudaMallocManaged((void**)&trace_sm,    total_warps * sizeof(uint));
-		cudaMallocManaged((void**)&trace_blk,   total_warps * sizeof(uint));
-		cudaMallocManaged((void**)&trace_start, total_warps * sizeof(double));
-		cudaMallocManaged((void**)&trace_end,   total_warps * sizeof(double));
-*/
 		cudaMallocManaged((void**)&trace_sm,    total_threads * sizeof(uint));
 		cudaMallocManaged((void**)&trace_blk,   total_threads * sizeof(uint));
 		cudaMallocManaged((void**)&trace_start, total_threads * sizeof(double));
@@ -96,6 +83,7 @@ public:
 	uint total_warps;
 	uint total_threads;
 };
+
 
 inline int BLK(int data, int blocksize)
 {
@@ -164,6 +152,8 @@ int main( int argc, char **argv)
 
 	int N = 1 << 20;
 
+	int dump_trace = 0;
+
 	if(argc >= 2)
 		num_streams = atoi(argv[1]);
 
@@ -173,25 +163,11 @@ int main( int argc, char **argv)
 	if(argc >= 4)
 		N = atoi(argv[3]);
 
+	if(argc >= 5)
+		dump_trace = atoi(argv[4]);
+
+
 	cudaSetDevice(devid);
-
-/*
-	printf("\nrunning %d cuda streams on device %d\n", num_streams, devid);
-
-	cudaDeviceProp prop;
-	cudaGetDeviceProperties(&prop, devid);
-	printf("Device Number: %d\n", devid);
-	printf("  Device name: %s\n", prop.name);
-	printf("  Memory Clock Rate (KHz): %d\n", prop.memoryClockRate);
-	printf("  Memory Bus Width (bits): %d\n", prop.memoryBusWidth);
-	printf("  Peak Memory Bandwidth (GB/s): %f\n\n", 2.0*prop.memoryClockRate*(prop.memoryBusWidth/8)/1.0e6);
-	printf("  Concurrent copy and execution: %s\n",  (prop.deviceOverlap ? "Yes" : "No"));
-	printf("  Concurrent kernels: %d\n",  (prop.concurrentKernels));
-	printf("  Concurrent copy and kernel execution: %s with %d copy engine(s)\n", 
-			(prop.deviceOverlap ? "Yes" : "No"), prop.asyncEngineCount);
-*/
-
-	//printf("running %d streams\n", num_streams);
 
 	// allocate streams
     cudaStream_t *streams = (cudaStream_t *) malloc(num_streams * sizeof(cudaStream_t));
@@ -205,10 +181,6 @@ int main( int argc, char **argv)
 	// allocate data on the host
 	//------------------------------------------------------------------------//
 	size_t databytes = N  * FLTSIZE; 
-
-	//float *a_h = (float*) malloc ( N * num_streams * FLTSIZE);
-	//float *b_h = (float*) malloc ( N * num_streams * FLTSIZE);
-	//float *c_h = (float*) malloc ( N * num_streams * FLTSIZE);
 
 	float *a_h = NULL;
     checkCudaErrors(cudaMallocHost((void **)&a_h, N * num_streams * FLTSIZE));
@@ -241,9 +213,7 @@ int main( int argc, char **argv)
 	WarpTrace *streams_trace = new WarpTrace[num_streams];
 
 	for(int i=0; i<num_streams; i++) {
-		//streams_trace[i].compute_totalwarps(blocks, threads);
 		streams_trace[i].compute_totalthreads(blocks, threads);
-
 		streams_trace[i].allocate_data();
 	}
 
@@ -292,10 +262,13 @@ int main( int argc, char **argv)
 
 	//printf("runtime (ms) : %f\n", gpuTime_ms);
 
-	printf("thread_id,stream_id,sm_id,block_id,start,end\n");
+	if(dump_trace == 1) {
 
-	for (int i = 0; i < num_streams; i++) {
-		streams_trace[i].print_log(i);
+		printf("thread_id,stream_id,sm_id,block_id,start,end\n");
+
+		for (int i = 0; i < num_streams; i++) {
+			streams_trace[i].print_log(i);
+		}
 	}
 
 	//------------------------------------------------------------------------//
