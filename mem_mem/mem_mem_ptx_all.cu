@@ -107,14 +107,15 @@ __global__ void kernel_vectorAdd (const float* __restrict__ a_d,
 	trace_sm[tid] 	= get_smid();
 	trace_blk[tid]	= get_global_blkid(); 
 
+	//-----------------------------//
+	// start timing 
+	//-----------------------------//
 	double start_time = double(timer()) * 1e-6; 
 	trace_start[tid] = start_time;
-	//printf("%.10lf\n", start_time);
 
-	//trace_timing[wid].x = double(timer()) * 1e-9;
-	//printf("%.10lf\n", start_time * 1e-6);
-
-
+	//-----------------------------//
+	// program
+	//-----------------------------//
 	if(tid < N) {
 		// read the next 16 data
 		float sum = 0.f;
@@ -126,22 +127,12 @@ __global__ void kernel_vectorAdd (const float* __restrict__ a_d,
 		c_d[tid + offset] = sum; 
 	}
 
-	/*
-	if(get_laneid() == 0) {
-		//trace[wid].w = timer();
-
-		//double end_time = double(timer());
-		//printf("%.10lf\n", end_time * 1e-6);
-		trace_timing[wid].y = double(timer()) * 1e-9;
-	}
-	*/
-
+	//-----------------------------//
+	// finish timing 
+	//-----------------------------//
 	double end_time = double(timer()) * 1e-6;
-	//printf("%.10lf\n", end_time);
 	trace_end[tid] = end_time;
 }
-
-
 
 
 int main( int argc, char **argv)
