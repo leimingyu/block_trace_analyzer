@@ -16,5 +16,18 @@ Analyze the concurrent kernel execution.
 * using unified memory to store the trace
 * when dumpying the trace info (for all the gpu threads), the clock() is normalized by 1e-6.
 
+
+### Examples
+The commandline option 
+
+./mem_mem_ptx_all stream_num device_id data_size print_log
+
+An examples,
+
+./mem_mem_ptx_all 1 0 1000 0
+
+
+
+
 ### Reference
 https://github.com/3upperm2n/cke_ovlp_rate
