@@ -11,5 +11,11 @@ It seems that from 40000 to 52000, the kernels are overlapping with each other.
 ```
 
 * step 3: find out the overlapping ratio for all the test cases and pick 2-3 cases to study.
+
 use search_ovlp_pos.ipynb
+```bash
+overlapping rate : 0.295503908039 data size : 43600
+overlapping rate : 0.205063858391 data size : 50200
+overlapping rate : 0.115285117999 data size : 47000
+```
 
