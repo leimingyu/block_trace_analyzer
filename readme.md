@@ -67,7 +67,7 @@ run the **search_ovlp_pos.ipynb**, it will produce something like below.
 ./mem_mem_ptx_all 2 0 40000 1 > tmp_40000.csv
 ```
 run 2stream_sm_blk_plot.ipynb, which will plot the block timeline for each SM
-<imag src="Figs/ovlp_plot.png" height='300'>
+<image src="Figs/ovlp_plot.png" height='300'>
 
 
 ### Reference
