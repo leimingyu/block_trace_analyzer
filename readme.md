@@ -19,6 +19,7 @@ Leiming Yu
 * when dumpying the trace info (for all the gpu threads), the clock() is normalized by 1e-6.
 
 **Device Info**
+
 GTX 950: maxwell, 6 SMs
 
 
