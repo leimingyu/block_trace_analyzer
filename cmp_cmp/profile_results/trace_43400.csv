@@ -1,0 +1,13 @@
+==10037== NVPROF is profiling process 10037, command: ./cmp_cmp_ptx 2 0 43400 0
+==10037== Profiling application: ./cmp_cmp_ptx 2 0 43400 0
+==10037== Profiling result:
+"Start","Duration","Grid X","Grid Y","Grid Z","Block X","Block Y","Block Z","Registers Per Thread","Static SMem","Dynamic SMem","Size","Throughput","Device","Context","Stream","Name"
+ms,us,,,,,,,,B,B,KB,GB/s,,,,
+526.783087,29.632000,,,,,,,,,,169.531250,5.456182,"GeForce GTX 950 (0)","1","13","[CUDA memcpy HtoD]"
+526.813935,34.145000,,,,,,,,,,169.531250,4.735030,"GeForce GTX 950 (0)","1","13","[CUDA memcpy HtoD]"
+526.849360,35.008000,,,,,,,,,,169.531250,4.618304,"GeForce GTX 950 (0)","1","14","[CUDA memcpy HtoD]"
+526.885840,29.440000,,,,,,,,,,169.531250,5.491766,"GeForce GTX 950 (0)","1","14","[CUDA memcpy HtoD]"
+526.927376,58.496000,170,1,1,256,1,1,20,0,0,,,"GeForce GTX 950 (0)","1","13","kernel_vectorAdd(float const *, float const *, int, int, float*, unsigned int*, unsigned int*, double*, double*) [230]"
+526.974960,62.209000,170,1,1,256,1,1,20,0,0,,,"GeForce GTX 950 (0)","1","14","kernel_vectorAdd(float const *, float const *, int, int, float*, unsigned int*, unsigned int*, double*, double*) [241]"
+526.995760,28.864000,,,,,,,,,,169.531250,5.601358,"GeForce GTX 950 (0)","1","13","[CUDA memcpy DtoH]"
+527.043313,28.768000,,,,,,,,,,169.531250,5.620050,"GeForce GTX 950 (0)","1","14","[CUDA memcpy DtoH]"
