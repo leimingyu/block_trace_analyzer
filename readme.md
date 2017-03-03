@@ -50,7 +50,8 @@ It will produce both trace and metrics for all the sampling points.
 ```bash
 ./profile_app.sh
 ```
-
+* step 4: detect the overlapping rate for 3 different test cases
+The default is 25%, 50%, 75%. But it could vary from case to case. Adjust by your own.
 
 
 ### Reference
