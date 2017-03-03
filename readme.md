@@ -61,6 +61,8 @@ The default is 25%, 50%, 75%. But it could vary from case to case. Adjust by you
 run the **search_ovlp_pos.ipynb**, it will produce something like below.
 <image src="Figs/ovlp_rate.png" height=300px>
 
+* step 5: plot block trace on each SM for the benchmark cases
+
 
 
 ### Reference
