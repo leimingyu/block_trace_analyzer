@@ -55,7 +55,7 @@ It will produce both trace and metrics for all the sampling points.
 The default is 25%, 50%, 75%. But it could vary from case to case. Adjust by your own.
 
 run the **search_ovlp_pos.ipynb**, it will produce something like below.
-<image src="Figs/ovlp_rate.png" height=250px>
+<image src="Figs/ovlp_rate.png" height=300px>
 
 
 
