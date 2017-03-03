@@ -61,8 +61,13 @@ The default is 25%, 50%, 75%. But it could vary from case to case. Adjust by you
 run the **search_ovlp_pos.ipynb**, it will produce something like below.
 <image src="Figs/ovlp_rate.png" height=300px>
 
-* step 5: plot block trace on each SM for the benchmark cases
-
+* step 5: generate and plot block trace on each SM for the benchmark cases
+```bash
+./mem_mem_ptx_all 2 0 23000 1 > tmp_23000.csv
+./mem_mem_ptx_all 2 0 40000 1 > tmp_40000.csv
+```
+run 2stream_sm_blk_plot.ipynb, which will plot the block timeline for each SM
+<imag src="Figs/ovlp_plot.png" heigh='300'>
 
 
 ### Reference
