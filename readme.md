@@ -68,7 +68,7 @@ run the **search_ovlp_pos.ipynb**, it will produce something like below.
 ```
 run 2stream_sm_blk_plot.ipynb, which will plot the block timeline for each SM
 
-<image src="Figs/ovlp_plot.png" height='300px'>
+<image src="Figs/ovlp_plot.png" height='600px'>
 
 
 ### Reference
