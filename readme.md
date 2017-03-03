@@ -18,6 +18,9 @@ Leiming Yu
 * using unified memory to store the trace
 * when dumpying the trace info (for all the gpu threads), the clock() is normalized by 1e-6.
 
+**Device Info**
+GTX 950: maxwell, 6 SMs
+
 
 ## Examples
 The commandline option 
@@ -28,8 +31,6 @@ To run without printing log file
 ```bash
 ./mem_mem_ptx_all 1 0 1000 0
 ```
-## Device Info
-GTX 950: maxwell, 6 SMs
 
 ## Verify the overlapping from the trace file
 * step 1: we need to run two streams and generating the trace.
