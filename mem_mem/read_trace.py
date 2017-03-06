@@ -147,3 +147,41 @@ def check_kernel_ovlprate(trace_file):
 #              .format(preK_runtime, curK_runtime, ovlp_duration, ovlp_ratio))
 
     return ovlp_ratio
+
+
+def get_kernel_time_from_trace(df_trace):
+    """
+    Read kernel time from trace.
+    """
+    # read the number of unique streams
+    stream_id_list = df_trace['Stream'].unique()
+    stream_id_list = stream_id_list[~np.isnan(stream_id_list)] # remove nan
+
+    start_coef, duration_coef = time_coef_ms(df_trace)
+
+    kernel_time_dd = {}
+
+    # read row by row
+    for rowID in xrange(1, df_trace.shape[0]):
+        #  extract info from the current row
+        stream_id, api_type, start_time_ms, end_time_ms = \
+        read_row(df_trace.iloc[[rowID]], start_coef, duration_coef)
+
+        # find out index of the stream
+        sid, = np.where(stream_id_list == stream_id)
+
+        sid = int(sid)
+        # find out the duration for kernel
+        if api_type == 'kernel':
+            duration = end_time_ms - start_time_ms
+            kernel_time_dd[sid] = duration
+
+    return kernel_time_dd
+
+
+def kernel_slowdown(s1_kernel_dd, s2_kernel_dd):
+    slow_down_ratio_list = []
+    for key, value in s2_kernel_dd.items():
+        v_s1 = s1_kernel_dd[0]
+        slow_down_ratio_list.append(value / float(v_s1))
+    return slow_down_ratio_list

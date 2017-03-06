@@ -1,0 +1,9 @@
+==25246== NVPROF is profiling process 25246, command: ./mem_mem_ptx_all 1 0 178000 0
+==25246== Profiling application: ./mem_mem_ptx_all 1 0 178000 0
+==25246== Profiling result:
+"Start","Duration","Grid X","Grid Y","Grid Z","Block X","Block Y","Block Z","Registers Per Thread","Static SMem","Dynamic SMem","Size","Throughput","Device","Context","Stream","Name"
+ms,us,,,,,,,,B,B,KB,GB/s,,,,
+529.445077,125.569000,,,,,,,,,,695.312500,5.280775,"GeForce GTX 950 (0)","1","13","[CUDA memcpy HtoD]"
+529.571766,115.297000,,,,,,,,,,695.312500,5.751248,"GeForce GTX 950 (0)","1","13","[CUDA memcpy HtoD]"
+529.692439,363.651000,696,1,1,256,1,1,28,0,0,,,"GeForce GTX 950 (0)","1","13","kernel_vectorAdd(float const *, float const *, int, int, float*, unsigned int*, unsigned int*, double*, double*) [223]"
+530.064826,113.633000,,,,,,,,,,695.312500,5.835467,"GeForce GTX 950 (0)","1","13","[CUDA memcpy DtoH]"
