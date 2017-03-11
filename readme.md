@@ -70,7 +70,10 @@ run 2stream_sm_blk_plot.ipynb, which will plot the block timeline for each SM
 
 <image src="Figs/ovlp_plot.png" height='600px'>
 
+## Use Avg Block Execution Model to predict the runtime
+**trace2model.ipynb**
+
 
 ### Reference
-https://github.com/3upperm2n/cke_ovlp_rate
-https://github.com/3upperm2n/avgblkmodel
+* https://github.com/3upperm2n/cke_ovlp_rate
+* https://github.com/3upperm2n/avgblkmodel
