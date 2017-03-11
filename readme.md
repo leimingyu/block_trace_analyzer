@@ -73,3 +73,4 @@ run 2stream_sm_blk_plot.ipynb, which will plot the block timeline for each SM
 
 ### Reference
 https://github.com/3upperm2n/cke_ovlp_rate
+https://github.com/3upperm2n/avgblkmodel
