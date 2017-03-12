@@ -71,8 +71,11 @@ run 2stream_sm_blk_plot.ipynb, which will plot the block timeline for each SM
 <image src="Figs/ovlp_plot.png" height='600px'>
 
 ## Use Avg Block Execution Model to predict the runtime
-**trace2model.ipynb**
-
+**ModelPredict.ipynb**
+* find overlapping cke kernels and their data size
+* find the single stream case for the data size, extract the avg blk time
+* predict the runtime for kernel concurrency
+* compare the model predicted runtime with the real runtime and save the results in csv
 
 ### Reference
 * https://github.com/3upperm2n/cke_ovlp_rate
